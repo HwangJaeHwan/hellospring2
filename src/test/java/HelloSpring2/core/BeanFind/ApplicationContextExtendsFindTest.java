@@ -19,8 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ApplicationContextExtendsFindTest {
 
-    AnnotationConfigApplicationContext ac = new
-            AnnotationConfigApplicationContext(TestConfig.class);
+    AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(TestConfig.class);
     @Test
     @DisplayName("부모 타입으로 조회시, 자식이 둘 이상 있으면, 중복 오류가 발생한다")
     void findBeanByParentTypeDuplicate() {
@@ -31,8 +30,7 @@ public class ApplicationContextExtendsFindTest {
     @Test
     @DisplayName("부모 타입으로 조회시, 자식이 둘 이상 있으면, 빈 이름을 지정하면 된다")
     void findBeanByParentTypeBeanName() {
-        DiscountPolicy rateDiscountPolicy = ac.getBean("rateDiscountPolicy",
-                DiscountPolicy.class);
+        DiscountPolicy rateDiscountPolicy = ac.getBean("rateDiscountPolicy", DiscountPolicy.class);
         assertThat(rateDiscountPolicy).isInstanceOf(RateDiscountPolicy.class);
     }
     @Test
@@ -44,12 +42,10 @@ public class ApplicationContextExtendsFindTest {
     @Test
     @DisplayName("부모 타입으로 모두 조회하기")
     void findAllBeanByParentType() {
-        Map<String, DiscountPolicy> beansOfType =
-                ac.getBeansOfType(DiscountPolicy.class);
+        Map<String, DiscountPolicy> beansOfType = ac.getBeansOfType(DiscountPolicy.class);
         assertThat(beansOfType.size()).isEqualTo(2);
         for (String key : beansOfType.keySet()) {
-            System.out.println("key = " + key + " value=" +
-                    beansOfType.get(key));
+            System.out.println("key = " + key + " value=" + beansOfType.get(key));
         }
     }
     @Test
@@ -57,8 +53,7 @@ public class ApplicationContextExtendsFindTest {
     void findAllBeanByObjectType() {
         Map<String, Object> beansOfType = ac.getBeansOfType(Object.class);
         for (String key : beansOfType.keySet()) {
-            System.out.println("key = " + key + " value=" +
-                    beansOfType.get(key));
+            System.out.println("key = " + key + " value=" + beansOfType.get(key));
         }
     }
     @Configuration
