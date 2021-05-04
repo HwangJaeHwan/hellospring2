@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class AppConfig {
+public class AppConfig {//팩토리 빈을 통해 빈 등록
 
     @Bean
     public MemberService memberService() {//생성자 주입
